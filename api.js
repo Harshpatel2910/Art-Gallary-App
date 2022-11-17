@@ -29,7 +29,7 @@ app.get('/customer', (req, res) => {
             console.log(err);
         }
         
-        
+
     });
 
     client.query(`Select * from customer`, (err, result) => {
@@ -38,6 +38,7 @@ app.get('/customer', (req, res) => {
             res.send(result.rows);
         }
         else {
+            
             console.log(err);
         }
     })
