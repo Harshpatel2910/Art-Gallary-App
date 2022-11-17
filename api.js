@@ -28,6 +28,7 @@ app.get('/customer', (req, res) => {
         else{
             console.log(err);
         }
+        
     });
 
     client.query(`Select * from customer`, (err, result) => {

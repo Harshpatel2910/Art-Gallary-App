@@ -9,6 +9,7 @@ const client = new Client({
     password:'Harsh12@',
     database:'postgres',
     
+    
 });
 
 
