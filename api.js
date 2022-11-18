@@ -10,6 +10,14 @@ app.listen(3000, () => {
 
 client.connect();
 
+//register view engine
+app.set("view engine", "ejs");
+
+app.get("/", (req, res) => {
+  //res.sendFile("./Front-End/HomePage/index.html", { root: __dirname });
+  res.render("index");
+});
+
 app.get("/customer", (req, res) => {
   client.query(`set search_path to "groupId4_S10_G3"`, (err, result) => {
     if (!err) {
