@@ -13,8 +13,15 @@ client.connect();
 //register view engine
 app.set("view engine", "ejs");
 
+//middleware and static file
+app.use(express.static("public"));
+
 app.get("/", (req, res) => {
   //res.sendFile("./Front-End/HomePage/index.html", { root: __dirname });
+  res.render("index");
+});
+
+app.get("/QueryExecutor", (req, res) => {
   res.render("index");
 });
 
