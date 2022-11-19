@@ -1,53 +1,98 @@
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<!DOCTYPE html>
+<html>
 
-<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+<head>
+    <title></title>
+    <style>
+        * {
+            font-family: Calibri;
+            font-size: 20px;
+        }
 
-<style>
-    th{ 
-        color:#fff;
-            }
-</style>
+        table,
+        th,
+        td {
+            border: solid 1px #ddd;
+            border-collapse: collapse;
+            padding: 2px 3px;
+
+            text-align: center;
+        }
+
+        th {
+            font-weight: bold;
+        }
+
+        p {
+            padding: 10px 0;
+        }
+    </style>
+</head>
+
+<body>
 
 
-<table class="table table-striped">
-    <tr  class="bg-info">
-        <th>Name</th>
-        <th>Age</th>
-        <th>Birthday</th>
-    </tr>
 
-    <tbody id="myTable">
-        
-    </tbody>
-</table>
+    <p id='showData'></p>
+
+
+
+</body>
 
 <script>
-	var myArray = [
-	    {'name':'Michael', 'age':'30', 'birthdate':'11/10/1989'},
-	    {'name':'Mila', 'age':'32', 'birthdate':'10/1/1989'},
-	    {'name':'Paul', 'age':'29', 'birthdate':'10/14/1990'},
-	    {'name':'Dennis', 'age':'25', 'birthdate':'11/29/1993'},
-	    {'name':'Tim', 'age':'27', 'birthdate':'3/12/1991'},
-	    {'name':'Erik', 'age':'24', 'birthdate':'10/31/1995'},
-	]
-	
-	buildTable(myArray)
+    let tableFromJson = () => {
+
+        const myBooks = [
+            { 'name': 'Michael', 'age': '30', 'birthdate': '11/10/1989' },
+            { 'name': 'Mila', 'age': '32', 'birthdate': '10/1/1989' },
+            { 'name': 'Paul', 'age': '29', 'birthdate': '10/14/1990' },
+            { 'name': 'Dennis', 'age': '25', 'birthdate': '11/29/1993' },
+            { 'name': 'Tim', 'age': '27', 'birthdate': '3/12/1991' },
+            { 'name': 'Erik', 'age': '24', 'birthdate': '10/31/1995' },
+        ]
 
 
-
-	function buildTable(data){
-		var table = document.getElementById('myTable')
-
-		for (var i = 0; i < data.length; i++){
-			var row = `<tr>
-							<td>${data[i].name}</td>
-							<td>${data[i].age}</td>
-							<td>${data[i].birthdate}</td>
-					  </tr>`
-			table.innerHTML += row
+        let col = [];
+        for (let i = 0; i < myBooks.length; i++) {
+            for (let key in myBooks[i]) {
+                if (col.indexOf(key) === -1) {
+                    col.push(key);
+                }
+            }
+        }
 
 
-		}
-	}
+        const table = document.createElement("table");
 
+
+        let tr = table.insertRow(-1);
+
+        for (let i = 0; i < col.length; i++) {
+            let th = document.createElement("th");
+            th.innerHTML = col[i];
+            tr.appendChild(th);
+        }
+
+
+        for (let i = 0; i < myBooks.length; i++) {
+
+            tr = table.insertRow(-1);
+
+            for (let j = 0; j < col.length; j++) {
+                let tabCell = tr.insertCell(-1);
+                tabCell.innerHTML = myBooks[i][col[j]];
+            }
+        }
+
+
+        const divShowData = document.getElementById('showData');
+        divShowData.innerHTML = "";
+        divShowData.appendChild(table);
+
+
+    }
+
+    tableFromJson();
 </script>
+
+</html>
