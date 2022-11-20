@@ -1,46 +1,34 @@
-const client = require("./connection");
-
 const express = require("express");
+const pool = require("./connection");
+const morgan = require("morgan");
 
 const app = express();
 
 app.listen(3000, () => {
   console.log("Server is running on port 3000");
 });
-
-client.connect();
-
-//register view engine
-app.set("view engine", "ejs");
-
-//middleware and static file
 app.use(express.static("public"));
+app.use(express.urlencoded({ extended: true }));
 
 app.get("/", (req, res) => {
-  //res.sendFile("./Front-End/HomePage/index.html", { root: __dirname });
-  res.render("index");
+  res.sendFile("index.html", { root: __dirname });
 });
 
-app.get("/QueryExecutor", (req, res) => {
-  res.render("index");
+pool.query(`set search_path to "groupId4_S10_G3"`, (err, result) => {
+  if (!err) {
+    console.log("Connected to database");
+  } else {
+    console.log(err);
+  }
 });
 
-app.get("/customer", (req, res) => {
-  client.query(`set search_path to "groupId4_S10_G3"`, (err, result) => {
-    if (!err) {
-      console.log("Connected to database");
-    } else {
-      console.log(err);
-    }
-  });
+app.get("/", (req, res) => {
+  res.sendFile("Front-End/buildTable.html", { root: __dirname });
+});
 
-  client.query(`Select * from customer`, (err, result) => {
-    if (!err) {
-      res.send(result.rows);
-    } else {
-      console.log(err);
-    }
-  });
-
-  client.end;
+app.post("/query", (req, res) => {
+  const re = pool
+    .query(`${req.body.body}`)
+    .then((response) => res.json(response.rows))
+    .catch((err) => res.json(err));
 });
