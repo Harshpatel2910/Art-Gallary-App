@@ -9,7 +9,7 @@ body{
     font-weight: bold;
 }
 
-p,h1,h2,h3,a,ul{
+p,h1,h2,h3,a,ul{    
     margin: 0;
     padding: 0;
     text-decoration: none;

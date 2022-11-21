@@ -22,45 +22,17 @@ app.get('/', (req, res) => {
 
 
 
-
-// app.get('/', (req, res) => {
-
-//     res.sendFile('buildTable.html', { root: __dirname });
-// });
-
 app.post('/query', (req, res) => {
     var data = [];
-    // pool.query(`${req.body.body}`).then((response) => {
-
-    //     res.status(200).render('buildtable', { data: {response.rows} });
-    // }).catch((err) => res.json(err));
-    // res.sendFile('buildTable.html', { root: __dirname });
-    // pool.query(`${req.body.body}`, (err, result) => {
-
-    //     if (!err) {
-    //         fs.readFile('buildTable.html', (err, data) => {
-    //             res.send(result.rows);
-    //         });
-    //     }
-    //     else {
-    //         console.log(err);
-    //     }
-    // })
 
     pool.query(`${req.body.body}`).then((result) => {
-            res.render("buildtable", {
-                data: {
-                    result1: result.rows
-                },
-            });
+        res.render("buildtable", {
+            data: {
+                result1: result.rows
+            },
+        });
 
-        })
-        .catch((err) => res.json(err));
-
-
-
-
-
+    }).catch((err) => res.json(err));
 })
 
 
@@ -69,46 +41,123 @@ app.post('/query', (req, res) => {
 
 app.post('/customer', (req, res) => {
 
-    const re = pool.query(`select * from "groupId4_S10_G3".customer`).then((response) => res.json(response.rows)).catch((err) => res.json(err));
+  
+
+    var data = [];
+
+    pool.query(`select * from "groupId4_S10_G3".customer`).then((result) => {
+        res.render("buildtable", {
+            data: {
+                result1: result.rows
+            },
+        });
+
+    }).catch((err) => res.json(err));
 })
 
 
 app.post('/post_item', (req, res) => {
 
-    const re = pool.query(`select * from "groupId4_S10_G3".post_item`).then((response) => res.json(response.rows)).catch((err) => res.json(err));
+       var data = [];
+
+    pool.query(`select * from "groupId4_S10_G3".post_item`).then((result) => {
+        res.render("buildtable", {
+            data: {
+                result1: result.rows
+            },
+        });
+
+    }).catch((err) => res.json(err));
 })
 
 
 app.post('/product_details', (req, res) => {
 
-    const re = pool.query(`select * from "groupId4_S10_G3".product_details`).then((response) => res.json(response.rows)).catch((err) => res.json(err));
+    var data = [];
+
+    pool.query(`select * from "groupId4_S10_G3".product_details`).then((result) => {
+        res.render("buildtable", {
+            data: {
+                result1: result.rows
+            },
+        });
+
+    }).catch((err) => res.json(err));
 })
 
 
 app.post('/order_details', (req, res) => {
 
-    const re = pool.query(`select * from "groupId4_S10_G3".order_details`).then((response) => res.json(response.rows)).catch((err) => res.json(err));
+    var data = [];
+
+    pool.query(`select * from "groupId4_S10_G3".order_details`).then((result) => {
+        res.render("buildtable", {
+            data: {
+                result1: result.rows
+            },
+        });
+
+    }).catch((err) => res.json(err));
 })
 
 app.post('/payment_details', (req, res) => {
 
-    const re = pool.query(`select * from "groupId4_S10_G3".payment_details`).then((response) => res.json(response.rows)).catch((err) => res.json(err));
+    var data = [];
+
+    pool.query(`select * from "groupId4_S10_G3".payment_details`).then((result) => {
+        res.render("buildtable", {
+            data: {
+                result1: result.rows
+            },
+        });
+
+    }).catch((err) => res.json(err));
 })
 
 
 app.post('/bidder', (req, res) => {
 
-    const re = pool.query(`select * from "groupId4_S10_G3".bidder`).then((response) => res.json(response.rows)).catch((err) => res.json(err));
+   
+    var data = [];
+
+    pool.query(`select * from "groupId4_S10_G3".bidder`).then((result) => {
+        res.render("buildtable", {
+            data: {
+                result1: result.rows
+            },
+        });
+
+    }).catch((err) => res.json(err));
 })
 
 app.post('/bid_product', (req, res) => {
 
-    const re = pool.query(`select * from "groupId4_S10_G3".bid_product`).then((response) => res.json(response.rows)).catch((err) => res.json(err));
+    
+    var data = [];
+
+    pool.query(`select * from "groupId4_S10_G3".bid_product`).then((result) => {
+        res.render("buildtable", {
+            data: {
+                result1: result.rows
+            },
+        });
+
+    }).catch((err) => res.json(err));
 })
 
 app.post('/cart_item', (req, res) => {
 
-    const re = pool.query(`select * from "groupId4_S10_G3".cart_item`).then((response) => res.json(response.rows)).catch((err) => res.json(err));
+    
+    var data = [];
+
+    pool.query(`select * from "groupId4_S10_G3".cart_item`).then((result) => {
+        res.render("buildtable", {
+            data: {
+                result1: result.rows
+            },
+        });
+
+    }).catch((err) => res.json(err));
 })
 
 
