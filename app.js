@@ -20,19 +20,6 @@ app.get('/', (req, res) => {
 
 
 
-pool.query(`set search_path to "groupId4_S10_G3"`, (err, result) => {
-
-    if (!err) {
-        console.log("Connected to database");
-    }
-    else {
-        console.log(err);
-    }
-
-
-});
-
-
 
 app.get('/', (req, res) => {
 
@@ -45,5 +32,50 @@ app.post('/query', (req, res) => {
 })
 
 
+// table routes
+
+app.post('/customer', (req, res) => {
+    
+    const re = pool.query(`select * from "groupId4_S10_G3".customer`).then((response) => res.json(response.rows)).catch((err) => res.json(err));
+})
+
+
+app.post('/post_item', (req, res) => {
+    
+    const re = pool.query(`select * from "groupId4_S10_G3".post_item`).then((response) => res.json(response.rows)).catch((err) => res.json(err));
+})
+
+
+app.post('/product_details', (req, res) => {
+    
+    const re = pool.query(`select * from "groupId4_S10_G3".product_details`).then((response) => res.json(response.rows)).catch((err) => res.json(err));
+})
+
+
+app.post('/order_details', (req, res) => {
+    
+    const re = pool.query(`select * from "groupId4_S10_G3".order_details`).then((response) => res.json(response.rows)).catch((err) => res.json(err));
+})
+
+app.post('/payment_details', (req, res) => {
+    
+    const re = pool.query(`select * from "groupId4_S10_G3".payment_details`).then((response) => res.json(response.rows)).catch((err) => res.json(err));
+})
+
+
+app.post('/bidder', (req, res) => {
+    
+    const re = pool.query(`select * from "groupId4_S10_G3".bidder`).then((response) => res.json(response.rows)).catch((err) => res.json(err));
+})
+
+app.post('/bid_product', (req, res) => {
+    
+    const re = pool.query(`select * from "groupId4_S10_G3".bid_product`).then((response) => res.json(response.rows)).catch((err) => res.json(err));
+})
+
+app.post('/cart_item', (req, res) => {
+    
+    const re = pool.query(`select * from "groupId4_S10_G3".cart_item`).then((response) => res.json(response.rows)).catch((err) => res.json(err));
+})
 
 
