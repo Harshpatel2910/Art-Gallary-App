@@ -4,9 +4,30 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../table.css">
     <title>insertPayment_details</title>
 </head>
 <body>
+
+    <div class="create-blog content">
+
+        <form action="/insertpayment_details" method="POST">
+
+            <label for="title">Payment_id</label>
+            <input type="text" id="title" name="title" required>
+            <label for="snippet">id</label>
+            <input type="text" id="snippet" name="snippet" required>
+            <label for="body">order_id</label>
+            <input type="text" id="snippet" name="snippet" required>
+            <label for="body">Payment_status</label>
+            <input type="text" id="snippet" name="snippet" required>
+
+            <label for="body">Payment_method</label>
+            <input type="text" id="snippet" name="snippet" required>
+
+            <button>Submit</button>
+        </form>
+    </div>
     
 </body>
 </html>
