@@ -5,6 +5,8 @@ const morgan = require('morgan');
 const app = express();
 
 
+app.set('view engine', 'ejs');
+
 app.listen(3000, () => {
 
     console.log('Server is running on port 3000');
@@ -21,60 +23,91 @@ app.get('/', (req, res) => {
 
 
 
-app.get('/', (req, res) => {
+// app.get('/', (req, res) => {
 
-    res.sendFile('buildTable.html', { root: __dirname });
-});
+//     res.sendFile('buildTable.html', { root: __dirname });
+// });
 
 app.post('/query', (req, res) => {
+    var data = [];
+    // pool.query(`${req.body.body}`).then((response) => {
 
-    const re = pool.query(`${req.body.body}`).then((response) => res.json(response.rows)).catch((err) => res.json(err));
+    //     res.status(200).render('buildtable', { data: {response.rows} });
+    // }).catch((err) => res.json(err));
+    // res.sendFile('buildTable.html', { root: __dirname });
+    // pool.query(`${req.body.body}`, (err, result) => {
+
+    //     if (!err) {
+    //         fs.readFile('buildTable.html', (err, data) => {
+    //             res.send(result.rows);
+    //         });
+    //     }
+    //     else {
+    //         console.log(err);
+    //     }
+    // })
+
+    pool.query(`${req.body.body}`).then((result) => {
+            res.render("buildtable", {
+                data: {
+                    result1: result.rows
+                },
+            });
+
+        })
+        .catch((err) => res.json(err));
+
+
+
+
+
 })
+
 
 
 // table routes
 
 app.post('/customer', (req, res) => {
-    
+
     const re = pool.query(`select * from "groupId4_S10_G3".customer`).then((response) => res.json(response.rows)).catch((err) => res.json(err));
 })
 
 
 app.post('/post_item', (req, res) => {
-    
+
     const re = pool.query(`select * from "groupId4_S10_G3".post_item`).then((response) => res.json(response.rows)).catch((err) => res.json(err));
 })
 
 
 app.post('/product_details', (req, res) => {
-    
+
     const re = pool.query(`select * from "groupId4_S10_G3".product_details`).then((response) => res.json(response.rows)).catch((err) => res.json(err));
 })
 
 
 app.post('/order_details', (req, res) => {
-    
+
     const re = pool.query(`select * from "groupId4_S10_G3".order_details`).then((response) => res.json(response.rows)).catch((err) => res.json(err));
 })
 
 app.post('/payment_details', (req, res) => {
-    
+
     const re = pool.query(`select * from "groupId4_S10_G3".payment_details`).then((response) => res.json(response.rows)).catch((err) => res.json(err));
 })
 
 
 app.post('/bidder', (req, res) => {
-    
+
     const re = pool.query(`select * from "groupId4_S10_G3".bidder`).then((response) => res.json(response.rows)).catch((err) => res.json(err));
 })
 
 app.post('/bid_product', (req, res) => {
-    
+
     const re = pool.query(`select * from "groupId4_S10_G3".bid_product`).then((response) => res.json(response.rows)).catch((err) => res.json(err));
 })
 
 app.post('/cart_item', (req, res) => {
-    
+
     const re = pool.query(`select * from "groupId4_S10_G3".cart_item`).then((response) => res.json(response.rows)).catch((err) => res.json(err));
 })
 
