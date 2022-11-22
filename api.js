@@ -1,88 +1,165 @@
-const client = require('./connection');
-
 const express = require('express');
-
+const pool = require('./connection');
+const morgan = require('morgan');
 
 const app = express();
 
 
+app.set('view engine', 'ejs');
 
-client.connect();
+app.listen(3000, () => {
 
-//register view engine
-app.set("view engine", "ejs");
+    console.log('Server is running on port 3000');
+})
+app.use(express.static('public'));
+app.use(express.urlencoded({ extended: true }));
 
-app.get("/", (req, res) => {
-  //res.sendFile("./Front-End/HomePage/index.html", { root: __dirname });
-  res.render("index");
+
+app.get('/', (req, res) => {
+
+    res.sendFile('index.html', { root: __dirname });
 });
 
-app.get("/customer", (req, res) => {
-  client.query(`set search_path to "groupId4_S10_G3"`, (err, result) => {
-    if (!err) {
-      console.log("Connected to database");
-    } else {
-      console.log(err);
-    }
-  });
-
-app.get('/query', (req, res) => {
-    client.query(`set search_path to "groupId4_S10_G3"`, (err, result) => {
-
-        if (!err) {
-            console.log("Connected to database");
-        }
-        else {
-            console.log(err);
-        }
 
 
-    });
 
-    client.query(`Select * from customer`, (err, result) => {
+// app.get('/', (req, res) => {
 
-        if (!err) {
-            res.send(result.rows);
-        }
-        else {
+//     res.sendFile('buildTable.html', { root: __dirname });
+// });
 
-            console.log(err);
-        }
-    })
+app.post('/query', (req, res) => {
+    var data = [];
+    // pool.query(`${req.body.body}`).then((response) => {
 
-    client.end;
+    //     res.status(200).render('buildtable', { data: {response.rows} });
+    // }).catch((err) => res.json(err));
+    // res.sendFile('buildTable.html', { root: __dirname });
+    // pool.query(`${req.body.body}`, (err, result) => {
+
+    //     if (!err) {
+    //         fs.readFile('buildTable.html', (err, data) => {
+    //             res.send(result.rows);
+    //         });
+    //     }
+    //     else {
+    //         console.log(err);
+    //     }
+    // })
+
+    pool.query(`${req.body.body}`).then((result) => {
+            res.render("buildTable", {
+                data: {
+                    result1: result.rows
+                },
+            });
+
+        })
+        .catch((err) => res.json(err));
+
+
+
 
 
 })
 
-app.get('/customer', (req, res) => {
 
 
-    client.query(`set search_path to "groupId4_S10_G3"`, (err, result) => {
+// table routes
 
-        if (!err) {
-            console.log("Connected to database");
-        }
-        else {
-            console.log(err);
-        }
+app.post('/customer', (req, res) => {
 
+     pool.query(`select * from "groupId4_S10_G3".customer`).then((result) => {
+        res.render("buildTable", {
+            data: {
+                result1: result.rows
+            },
+        });
 
-    });
-
-    client.query(`Select * from customer`, (err, result) => {
-
-        if (!err) {
-            res.send(result.rows);
-        }
-        else {
-
-            console.log(err);
-        }
-    })
-
-    client.end;
+    }).catch((err) => res.json(err));
 })
 
 
+app.post('/post_item', (req, res) => {
 
+     pool.query(`select * from "groupId4_S10_G3".post_item`).then((result) => {
+        res.render("buildTable", {
+            data: {
+                result1: result.rows
+            },
+        });
+
+    }).catch((err) => res.json(err));
+})
+
+
+app.post('/product_details', (req, res) => {
+
+    pool.query(`select * from "groupId4_S10_G3".product_details`).then((result) => {
+        res.render("buildTable", {
+            data: {
+                result1: result.rows
+            },
+        });
+
+    }).catch((err) => res.json(err));
+})
+
+
+app.post('/order_details', (req, res) => {
+
+    pool.query(`select * from "groupId4_S10_G3".order_details`).then((result) => {
+        res.render("buildTable", {
+            data: {
+                result1: result.rows
+            },
+        });
+
+    }).catch((err) => res.json(err));
+})
+
+app.post('/payment_details', (req, res) => {
+    pool.query(`select * from "groupId4_S10_G3".payment_details`).then((result) => {
+        res.render("buildTable", {
+            data: {
+                result1: result.rows
+            },
+        });
+
+    }).catch((err) => res.json(err));
+})
+
+
+app.post('/bidder', (req, res) => {
+
+    pool.query(`select * from "groupId4_S10_G3".bidder`).then((result) => {
+        res.render("buildTable", {
+            data: {
+                result1: result.rows
+            },
+        });
+
+    }).catch((err) => res.json(err));
+})
+
+app.post('/bid_product', (req, res) => {
+    pool.query(`select * from "groupId4_S10_G3".bid_product`).then((result) => {
+        res.render("buildTable", {
+            data: {
+                result1: result.rows
+            },
+        });
+
+    }).catch((err) => res.json(err));
+})
+
+app.post('/cart_item', (req, res) => {
+    pool.query(`select * from "groupId4_S10_G3".cart_item`).then((result) => {
+        res.render("buildTable", {
+            data: {
+                result1: result.rows
+            },
+        });
+
+    }).catch((err) => res.json(err));
+})

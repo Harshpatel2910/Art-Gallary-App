@@ -1,0 +1,74 @@
+@import url('https://fonts.googleapis.com/css2?family=Noto+Serif:wght@400;700&display=swap');
+
+body {
+    max-width: 1200px;
+    margin: 100px auto;
+    padding: 0 20px;
+    font-family: 'Noto Serif', serif;
+    max-width: 120 px;
+    font-weight: bold;
+    background-image: url("bg2.jpg");
+    background-repeat: no-repeat;
+    background-size: 100%;
+}
+
+h1 {
+    color: white;
+}
+
+
+
+.left_div {
+    float: left;
+}
+
+.right_div {
+    float: left;
+}
+
+div {
+    padding: 1%;
+    color: white;
+    background-color: 009900;
+    width: 47%;
+    /* border: solid black; */
+}
+
+.btn {
+    margin-top: 12px;
+    font-family: "Times New Roman", Times, serif;
+    font-size: large;
+    color: blue;
+    background-color: #4CAF50;
+    /* margin-left: 100px; */
+}
+
+.btn1 {
+    margin-top: 12px;
+    font-family: "Times New Roman", Times, serif;
+    font-size: large;
+
+}
+
+.submit {
+    background-color: black;
+    border-radius: 12px;
+    border: 0;
+    box-sizing: border-box;
+    color: rgb(50, 186, 199);
+    font-weight: 700;
+    cursor: pointer;
+    font-size: 18px;
+    height: 50px;
+    margin-top: 15px;
+    opacity: 10;
+    /* // outline: 0; */
+    text-align: center;
+    width: 40%;
+}
+
+#operation {
+    width: 50%;
+    height: 50px;
+    margin-top: 20px;
+}
