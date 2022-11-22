@@ -7,6 +7,9 @@ body {
   font-family: "Noto Serif", serif;
   max-width: 120 px;
   font-weight: bold;
+  background-image: url("bg1.jpg");
+  background-repeat: no-repeat;
+  background-size: 100%;
 }
 
 .header {
@@ -23,7 +26,11 @@ ul {
   margin: 0;
   padding: 0;
   text-decoration: none;
-  color: #222;
+  color: white;
+}
+
+label {
+  color: white;
 }
 
 .create-blog form {
@@ -38,14 +45,18 @@ ul {
   width: 100%;
   margin: 10px 0;
   padding: 8px;
+  background-color: rgb(231, 239, 241);
 }
+
 .create-blog label {
   display: block;
   margin-top: 24px;
 }
+
 textarea {
   height: 120px;
 }
+
 .create-blog button {
   margin-top: 20px;
   background: crimson;
