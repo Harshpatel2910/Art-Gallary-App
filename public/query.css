@@ -1,47 +1,67 @@
-@import url('https://fonts.googleapis.com/css2?family=Noto+Serif:wght@400;700&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Noto+Serif:wght@400;700&display=swap");
 
-body{
-    max-width: 1200px;
-    margin: 100px auto;
-    padding: 0 20px;
-    font-family: 'Noto Serif',serif;
-    max-width: 120 px;
-    font-weight: bold;
+body {
+  max-width: 1200px;
+  margin: 100px auto;
+  padding: 0 20px;
+  font-family: "Noto Serif", serif;
+  max-width: 120 px;
+  font-weight: bold;
+  background-image: url("bg1.jpg");
+  background-repeat: no-repeat;
+  background-size: 100%;
 }
 
-p,h1,h2,h3,a,ul{
-    margin: 0;
-    padding: 0;
-    text-decoration: none;
-    color: #222;
+.header {
+  text-align: center;
+  margin-bottom: 100px;
 }
-.create-blog form{
 
-    margin-top: 50px;
-         max-width: 400px;
-         margin: 0 auto;
+p,
+h1,
+h2,
+h3,
+a,
+ul {
+  margin: 0;
+  padding: 0;
+  text-decoration: none;
+  color: white;
 }
+
+label {
+  color: white;
+}
+
+.create-blog form {
+  margin-top: 50px;
+  max-width: 400px;
+  margin: 0 auto;
+}
+
 .create-blog input,
-.create-blog textarea{
-    display: block;
-    width: 100%;
-    margin: 10px 0;
-    padding: 8px;
+.create-blog textarea {
+  display: block;
+  width: 100%;
+  margin: 10px 0;
+  padding: 8px;
+  background-color: rgb(231, 239, 241);
 }
-.create-blog label{
-    display: block;
-    margin-top: 24px;
 
+.create-blog label {
+  display: block;
+  margin-top: 24px;
 }
-textarea{
-         height: 120px;
-}
-.create-blog button{
-    margin-top: 20px;
-    background: crimson;
-    color: white;
-    border: 0;
-    font-size: 1.2em;
-    cursor: pointer;
 
+textarea {
+  height: 120px;
+}
+
+.create-blog button {
+  margin-top: 20px;
+  background: crimson;
+  color: white;
+  border: 0;
+  font-size: 1.2em;
+  cursor: pointer;
 }
