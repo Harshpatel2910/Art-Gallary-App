@@ -35,7 +35,7 @@
 
 <script>
   let tableFromJson = () => {
-    var jsonData = <% - JSON.stringify(data) %>;
+    var jsonData = <%- JSON.stringify(data) %>;
     var tableData = eval(jsonData).result1;
 
     // console.log(typeof(tableData));
