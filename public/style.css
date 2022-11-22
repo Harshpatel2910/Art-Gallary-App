@@ -15,17 +15,11 @@ body {
 }
 
 .bottom-onehalf {
-  border-radius: 12px;
-  border: 0;
-  box-sizing: border-box;
   margin-bottom: 0.5cm;
   font-family: "Times New Roman", Times, serif;
-  font-weight: 700;
   font-size: large;
   color: blue;
-  cursor: pointer;
 }
-
 .footer {
   color: white;
   position: absolute;
