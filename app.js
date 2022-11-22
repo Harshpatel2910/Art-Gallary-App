@@ -52,7 +52,6 @@ app.get('/customer', (req, res) => {
 app.get('/post_item', (req, res) => {
     var data = [];
     pool.query(`select * from "groupId4_S10_G3".post_item`).then((result) => {
-        //console.log(result.rows)
         res.render("buildtable", {
             data: {
                 result1: result.rows
