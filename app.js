@@ -39,6 +39,21 @@ app.post('/query', (req, res) => {
 
 // table routes
 
+
+app.get('/customer', (req, res) => {
+
+    var data = [];
+
+    pool.query(`select * from "groupId4_S10_G3".customer`).then((result) => {
+        res.render("buildtable", {
+            data: {
+                result1: result.rows
+            },
+        });
+
+    }).catch((err) => res.json(err));
+    
+})
 app.post('/customer', (req, res) => {
 
   
@@ -158,6 +173,25 @@ app.post('/cart_item', (req, res) => {
         });
 
     }).catch((err) => res.json(err));
+})
+
+
+app.post('/insertcustomer',(req,res)=>{
+
+    const data = [];
+
+    console.log(req.body);
+
+    pool.query(`insert into "groupId4_S10_G3".customer values('${req.body.id}','${req.body.Name}','${req.body.User_name}','${req.body.User_type}','${req.body.Password}','${req.body.Address}',${Number(req.body.Telephone)},'${req.body.Email}','${req.body.city}')`).then((result) => {
+          
+
+            res.redirect('/customer');
+
+
+    }).catch((err) => res.json(err));
+
+
+
 })
 
 
